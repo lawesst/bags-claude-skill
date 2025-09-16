@@ -1,0 +1,36 @@
+[
+  {"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},
+  {"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},
+  {"inputs":[],"name":"decimals","outputs":[{"internalType":"uint8","name":"","type":"uint8"}],"stateMutability":"view","type":"function"},
+  {"inputs":[],"name":"getUtilization","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},
+  {"inputs":[{"internalType":"uint256","name":"utilization","type":"uint256"}],"name":"getBorrowRate","outputs":[{"internalType":"uint64","name":"","type":"uint64"}],"stateMutability":"view","type":"function"},
+  {"inputs":[{"internalType":"uint256","name":"utilization","type":"uint256"}],"name":"getSupplyRate","outputs":[{"internalType":"uint64","name":"","type":"uint64"}],"stateMutability":"view","type":"function"},
+  {"inputs":[],"name":"reserveRate","outputs":[{"internalType":"uint64","name":"","type":"uint64"}],"stateMutability":"view","type":"function"},
+  {"inputs":[],"name":"kink","outputs":[{"internalType":"uint64","name":"","type":"uint64"}],"stateMutability":"view","type":"function"},
+  {"inputs":[],"name":"baseRate","outputs":[{"internalType":"uint64","name":"","type":"uint64"}],"stateMutability":"view","type":"function"},
+  {"inputs":[],"name":"slopeLow","outputs":[{"internalType":"uint64","name":"","type":"uint64"}],"stateMutability":"view","type":"function"},
+  {"inputs":[],"name":"slopeHigh","outputs":[{"internalType":"uint64","name":"","type":"uint64"}],"stateMutability":"view","type":"function"},
+  {"inputs":[],"name":"storeFrontPriceFactor","outputs":[{"internalType":"uint64","name":"","type":"uint64"}],"stateMutability":"view","type":"function"},
+  {"inputs":[],"name":"numAssets","outputs":[{"internalType":"uint8","name":"","type":"uint8"}],"stateMutability":"view","type":"function"},
+  {"inputs":[{"internalType":"uint8","name":"i","type":"uint8"}],"name":"getAssetInfo","outputs":[
+    {"internalType":"uint8","name":"offset","type":"uint8"},
+    {"internalType":"address","name":"asset","type":"address"},
+    {"internalType":"address","name":"priceFeed","type":"address"},
+    {"internalType":"uint64","name":"scale","type":"uint64"},
+    {"internalType":"uint64","name":"borrowCollateralFactor","type":"uint64"},
+    {"internalType":"uint64","name":"liquidateCollateralFactor","type":"uint64"},
+    {"internalType":"uint64","name":"liquidationFactor","type":"uint64"},
+    {"internalType":"uint128","name":"supplyCap","type":"uint128"}
+  ],"stateMutability":"view","type":"function"},
+  {"inputs":[{"internalType":"address","name":"asset","type":"address"}],"name":"getAssetInfoByAddress","outputs":[
+    {"internalType":"uint8","name":"offset","type":"uint8"},
+    {"internalType":"address","name":"asset","type":"address"},
+    {"internalType":"address","name":"priceFeed","type":"address"},
+    {"internalType":"uint64","name":"scale","type":"uint64"},
+    {"internalType":"uint64","name":"borrowCollateralFactor","type":"uint64"},
+    {"internalType":"uint64","name":"liquidateCollateralFactor","type":"uint64"},
+    {"internalType":"uint64","name":"liquidationFactor","type":"uint64"},
+    {"internalType":"uint128","name":"supplyCap","type":"uint128"}
+  ],"stateMutability":"view","type":"function"},
+  {"inputs":[{"internalType":"address","name":"asset","type":"address"}],"name":"getPrice","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"}
+] 

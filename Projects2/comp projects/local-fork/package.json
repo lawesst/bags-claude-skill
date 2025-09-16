@@ -1,0 +1,14 @@
+{
+  "name": "local-fork",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "node": "hardhat node",
+    "clean": "hardhat clean"
+  },
+  "devDependencies": {
+    "hardhat": "^2.22.7",
+    "dotenv": "^16.4.5"
+  }
+} 

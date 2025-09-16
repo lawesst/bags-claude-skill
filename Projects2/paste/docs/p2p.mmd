@@ -1,0 +1,18 @@
+sequenceDiagram
+  autonumber
+  participant U as User (Sender)
+  participant App as Paste App
+  participant DB as Phone→Address Registry
+  participant AA as 4337 Paymaster
+  participant Pay as Payments (Arbitrum)
+  participant USDT as USDT (0xFd086…Cbb9)
+  participant R as Recipient Wallet
+
+  U->>App: Enter recipient phone + amount
+  App->>DB: Resolve phone → recipient address
+  App->>AA: Submit UserOp (signed by embedded wallet)
+  AA->>Pay: executeUserOp()
+  Pay->>USDT: transferFrom(sender, recipient, amount)
+  USDT-->>R: Balance updated
+  Pay-->>App: tx hash
+  App-->>U: Success + tx link 

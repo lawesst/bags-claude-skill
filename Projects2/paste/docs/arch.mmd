@@ -1,0 +1,56 @@
+flowchart TB
+  %% System architecture with inbuilt ramp + LP pools (concise)
+
+  subgraph Mobile["Mobile App"]
+    App["Paste App"]
+    Wallet["Embedded Wallet (Phone login • Gasless AA)"]
+  end
+
+  subgraph Backend["Backend"]
+    API["API"]
+    Svc["Services: Payments • Savings • BNPN"]
+    RampEng["Ramping Engine (Internal)"]
+    Data["Ledger / DB"]
+  end
+
+  subgraph Liquidity["Liquidity (Internal)"]
+    Pools["USDT ↔ Local Currency Pools"]
+    LPs["Liquidity Providers (Users)"]
+  end
+
+  subgraph Arbitrum["Arbitrum One"]
+    Core["Core Contracts (Payments / Escrow)"]
+    Vault["Savings Vault (ERC-4626)"]
+    BNPN["BNPN Manager"]
+    USDT["USDT (ERC-20)"]
+    Aave["Aave v3"]
+    AA["Account Abstraction (EntryPoint / Paymaster)"]
+    SA["User Smart Accounts"]
+  end
+
+  subgraph External["External"]
+    MPesa["Mobile Money (M-Pesa)"]
+    Bridge["Bridge (EVM inflows)"]
+  end
+
+  %% Primary flows
+  App --> API
+  App --> Wallet
+  API --> Svc
+  API --> Data
+  Svc --> Core
+  Svc --> Vault
+  Svc --> BNPN
+
+  SA --> AA
+  Core --> SA
+  Vault --> SA
+  BNPN --> SA
+  Vault --> Aave
+  Core --> USDT
+
+  API <---> RampEng
+  RampEng <---> Pools
+  LPs --> Pools
+  RampEng --> MPesa
+  API <---> Bridge 

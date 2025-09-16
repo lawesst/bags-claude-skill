@@ -1,0 +1,23 @@
+sequenceDiagram
+  autonumber
+  participant U as User
+  participant App as Paste App
+  participant AA as 4337 Paymaster
+  participant Vault as Savings Vault (ERC-4626)
+  participant Aave as Aave v3 Pool (Arbitrum)
+  participant USDT as USDT (0xFd086…Cbb9)
+
+  U->>App: Deposit USDT
+  App->>AA: UserOp: Vault.deposit(amount)
+  AA->>Vault: deposit()
+  Vault->>USDT: transferFrom(user, vault, amount)
+  Vault->>Aave: supply(USDT, amount)
+  Aave-->>Vault: aUSDT accrues to vault
+  Vault-->>App: shares minted → user
+
+  U->>App: Withdraw USDT
+  App->>AA: UserOp: Vault.redeem(shares)
+  AA->>Vault: redeem()
+  Vault->>Aave: withdraw(USDT)
+  Aave-->>Vault: USDT returned
+  Vault->>USDT: transfer(vault→user, amount+yield) 

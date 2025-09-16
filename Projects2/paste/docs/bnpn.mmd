@@ -1,0 +1,26 @@
+sequenceDiagram
+  autonumber
+  participant U as User
+  participant App as Paste App
+  participant AA as 4337 Paymaster
+  participant Vault as Savings Vault (ERC-4626)
+  participant BNPN as BNPN Manager
+  participant Aave as Aave v3 Pool
+  participant USDT as USDT (0xFd086…Cbb9)
+  participant Merchant as Merchant (on-chain/KES)
+  participant Ramp as Ramping Engine (for KES)
+
+  U->>App: Stake USDT (establish BNPN limit)
+  App->>AA: Vault.deposit(amount)
+  AA->>Vault: Principal locked → Aave supply()
+
+  U->>App: BNPN purchase (amount)
+  App->>BNPN: Authorize yield-spend (within cap)
+  BNPN->>Vault: claimYield(up to accrued cap)
+  Vault->>Aave: withdraw(yield USDT)
+  Aave-->>Vault: USDT yield
+  alt Merchant on-chain
+    BNPN->>USDT: transfer(vault→merchant, yield)
+  else Merchant KES
+    BNPN->>Ramp: payout KES → payoutRef
+  end 
