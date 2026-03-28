@@ -34,7 +34,7 @@ Claude handles the multi-step orchestration, presents human-readable confirmatio
 ### 1. Install
 
 ```bash
-git clone https://github.com/vicgunga/bags-claude-skill.git
+git clone https://github.com/lawesst/bags-claude-skill.git
 cd bags-claude-skill
 npm install
 ```
