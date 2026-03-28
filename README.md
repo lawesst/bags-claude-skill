@@ -2,8 +2,6 @@
 
 A Claude Code skill that turns Claude into a Bags.fm operations expert. Launch tokens, trade, configure fee sharing, and claim fees — all through natural language in your terminal.
 
-**Hackathon Track**: Claude Skills | [bags.fm/hackathon](https://bags.fm/hackathon)
-
 ## What It Does
 
 Instead of learning the Bags.fm API, just tell Claude what you want:
@@ -103,14 +101,12 @@ Claude will guide you through:
 
 **How it works**: SKILL.md gives Claude domain expertise about Bags.fm. When you ask Claude to do something, it reads the workflow playbooks, runs the appropriate TypeScript script, parses the JSON output, and presents a human-readable summary. Transactions always require your explicit confirmation.
 
-## Partner Fee Revenue (MRR)
+## Partner Fee Revenue
 
 Every operation through this skill routes through the Bags partner program:
 - **25% of all trading fees** on trades executed through the skill
 - Automatic partner config creation during setup
 - Claim partner fees anytime with `/bags claim partner fees`
-
-This generates measurable Monthly Recurring Revenue (MRR) — a key hackathon judging criterion.
 
 ## Tech Stack
 
