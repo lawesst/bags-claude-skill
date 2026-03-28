@@ -18,12 +18,6 @@
       "runtimeExecutable": "npx",
       "runtimeArgs": ["tsx", ".claude/skills/bags/scripts/analytics.ts", "--action", "leaderboard"],
       "port": 0
-    },
-    {
-      "name": "hardhat-local-fork",
-      "runtimeExecutable": "npx",
-      "runtimeArgs": ["hardhat", "node"],
-      "port": 8545
     }
   ]
 }
