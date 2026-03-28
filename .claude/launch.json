@@ -1,0 +1,29 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "bags-setup",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["tsx", ".claude/skills/bags/scripts/setup.ts", "check"],
+      "port": 0
+    },
+    {
+      "name": "bags-wallet",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["tsx", ".claude/skills/bags/scripts/wallet-info.ts"],
+      "port": 0
+    },
+    {
+      "name": "bags-analytics",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["tsx", ".claude/skills/bags/scripts/analytics.ts", "--action", "leaderboard"],
+      "port": 0
+    },
+    {
+      "name": "hardhat-local-fork",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["hardhat", "node"],
+      "port": 8545
+    }
+  ]
+}
