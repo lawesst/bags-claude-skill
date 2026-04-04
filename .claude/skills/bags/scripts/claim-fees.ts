@@ -64,7 +64,7 @@ async function main() {
       );
       for (const tx of txs) {
         tx.sign(keypair);
-        const sig = await connection.sendTransaction(tx);
+        const sig = await connection.sendTransaction(tx as any);
         await connection.confirmTransaction(sig, "confirmed");
         results.push({ baseMint: position.baseMint, signature: sig });
       }
