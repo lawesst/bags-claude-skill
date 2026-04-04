@@ -34,6 +34,7 @@ Claude handles the multi-step orchestration, presents human-readable confirmatio
 ```bash
 git clone https://github.com/lawesst/bags-claude-skill.git
 cd bags-claude-skill
+cp .env.example .env
 npm install
 ```
 
@@ -115,6 +116,18 @@ Every operation through this skill routes through the Bags partner program:
 - **@solana/web3.js** — Solana blockchain interaction
 - **tsx** — zero-config TypeScript execution
 - **zod** — runtime environment validation
+
+## Security
+
+- Private keys are never displayed in Claude's output
+- All transactions require explicit user confirmation before execution
+- High price impact trades (>5%) trigger warnings
+- Fee share BPS validation prevents misconfigured splits
+- Admin transfers require double confirmation (irreversible)
+
+## Contributing
+
+Contributions welcome. Fork the repo, make your changes, and open a PR.
 
 ## License
 
