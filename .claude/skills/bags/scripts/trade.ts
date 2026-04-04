@@ -88,6 +88,20 @@ async function main() {
     process.exit(1);
   }
 
+  // Check SOL balance before buying
+  const isBuying = args.inputMint === WRAPPED_SOL_MINT.toBase58();
+  const balance = await connection.getBalance(keypair.publicKey);
+  if (isBuying && args.amount > balance) {
+    output({
+      success: false,
+      error: "Insufficient SOL balance",
+      required: (args.amount / LAMPORTS_PER_SOL).toFixed(4) + " SOL",
+      available: (balance / LAMPORTS_PER_SOL).toFixed(4) + " SOL",
+      wallet: keypair.publicKey.toBase58(),
+    });
+    process.exit(1);
+  }
+
   // Get quote
   const quote = await sdk.trade.getQuote({
     inputMint: new PublicKey(args.inputMint),
@@ -97,7 +111,6 @@ async function main() {
     ...(args.slippageBps && { slippageBps: args.slippageBps }),
   });
 
-  const isBuying = args.inputMint === WRAPPED_SOL_MINT.toBase58();
   const priceImpact = parseFloat(quote.priceImpactPct);
 
   const quoteResult = {
