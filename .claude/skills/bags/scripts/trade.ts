@@ -72,6 +72,22 @@ async function main() {
     process.exit(1);
   }
 
+  if (args.amount <= 0) {
+    output({
+      success: false,
+      error: "Trade amount must be greater than zero",
+    });
+    process.exit(1);
+  }
+
+  if (args.inputMint === args.outputMint) {
+    output({
+      success: false,
+      error: "Input and output mints cannot be the same",
+    });
+    process.exit(1);
+  }
+
   // Get quote
   const quote = await sdk.trade.getQuote({
     inputMint: new PublicKey(args.inputMint),
